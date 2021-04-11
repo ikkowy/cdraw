@@ -26,8 +26,15 @@ Window {
     color: Style.colorBackground
 
     Ribbon {
-        RibbonGroup { name: "Home" }
+        RibbonGroup {
+            id: ribbonGroupHome
+            name: "Home"
+        }
+
         RibbonGroup { name: "Insert" }
+
         RibbonGroup { name: "Help" }
+
+        Component.onCompleted: { selectGroup(ribbonGroupHome); }
     }
 }

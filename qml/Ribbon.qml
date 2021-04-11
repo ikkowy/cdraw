@@ -38,15 +38,19 @@ Rectangle {
 
     Component.onCompleted: {
         const RibbonGroupButton = Qt.createComponent("RibbonGroupButton.qml");
-        var first = true;
-        for (var i=0; i < ribbon.children.length; i++) {
-            var child = ribbon.children[i];
+        for (var i=0; i < children.length; i++) {
+            var child = children[i];
             if (child.objectName === "RibbonGroup") {
-                var button = RibbonGroupButton.createObject(groups, {group: child});
-                if (first) {
-                    button.active = true;
-                    first = false;
-                }
+                RibbonGroupButton.createObject(groups, {ribbon: ribbon, group: child});
+            }
+        }
+    }
+
+    function selectGroup(group) {
+        for (var i=0; i < groups.children.length; i++) {
+            var child = groups.children[i];
+            if (child.objectName === "RibbonGroupButton") {
+                child.active = child.group === group;
             }
         }
     }

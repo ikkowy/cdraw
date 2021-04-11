@@ -18,10 +18,12 @@
 import QtQuick 2.0
 
 Rectangle {
+    objectName: "RibbonGroupButton"
     width: label.width + 20
     height: 20
     color: active ? Style.colorForeground : Style.colorBackground
 
+    property var ribbon
     property var group
     property bool active: false
 
@@ -33,7 +35,7 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: { active = !active; }
+        onClicked: { ribbon.selectGroup(group); }
     }
 
     onGroupChanged: {
