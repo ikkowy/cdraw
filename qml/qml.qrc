@@ -3,5 +3,8 @@
         <file>MainWindow.qml</file>
         <file>Style.qml</file>
         <file>qmldir</file>
+        <file>Ribbon.qml</file>
+        <file>RibbonGroup.qml</file>
+        <file>RibbonGroupButton.qml</file>
     </qresource>
 </RCC>

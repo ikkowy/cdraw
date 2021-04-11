@@ -15,19 +15,28 @@
  * along with Chicken Draw.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.12
-import QtQuick.Window 2.12
+import QtQuick 2.0
 
-Window {
-    width: 800
-    height: 600
-    visible: true
-    title: "Chicken Draw"
-    color: Style.colorBackground
+Rectangle {
+    width: label.width + 20
+    height: 20
+    color: active ? Style.colorForeground : Style.colorBackground
 
-    Ribbon {
-        RibbonGroup { name: "Home" }
-        RibbonGroup { name: "Insert" }
-        RibbonGroup { name: "Help" }
+    property var group
+    property bool active: false
+
+    Text {
+        id: label
+        anchors.centerIn: parent
+        color: active ? Style.colorText : Style.colorTextInactive
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: { active = !active; }
+    }
+
+    onGroupChanged: {
+        label.text = group.name;
     }
 }

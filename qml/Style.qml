@@ -22,4 +22,6 @@ import QtQuick 2.0
 Item {
     property color colorBackground: "#101010"
     property color colorForeground: "#202020"
+    property color colorText: "#f0f0f0"
+    property color colorTextInactive: "#a0a0a0"
 }
