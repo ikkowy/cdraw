@@ -20,8 +20,10 @@ import QtQuick 2.0
 Rectangle {
     id: ribbon
     width: parent.width
-    height: 80
+    height: minimized ? groups.height : 80
     color: Style.colorBackground
+
+    property bool minimized: false
 
     Row {
         id: groups

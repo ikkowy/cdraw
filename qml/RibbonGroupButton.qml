@@ -36,6 +36,7 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         onClicked: { ribbon.selectGroup(group); }
+        onDoubleClicked: { if (active) { ribbon.minimized = !ribbon.minimized; } }
     }
 
     onGroupChanged: {
