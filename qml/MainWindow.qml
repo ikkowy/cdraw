@@ -26,6 +26,8 @@ Window {
     color: Style.colorBackground
 
     Ribbon {
+        id: ribbon
+
         RibbonGroup {
             id: ribbonGroupHome
             name: "Home"
@@ -36,5 +38,29 @@ Window {
         RibbonGroup { name: "Help" }
 
         Component.onCompleted: { selectGroup(ribbonGroupHome); }
+    }
+
+    Rectangle {
+        id: sidebar
+        width: 200
+        height: parent.height - ribbon.height
+        anchors.bottom: parent.bottom
+        color: Style.colorForeground
+
+        Rectangle {
+            width: 3
+            height: parent.height
+            anchors.right: parent.right
+            color: Style.colorBorder
+
+            MouseArea {
+                anchors.fill: parent
+                cursorShape: Qt.SplitHCursor
+                onPositionChanged: {
+                    var width = sidebar.width + mouseX;
+                    sidebar.width = Math.max(width, parent.width);
+                }
+            }
+        }
     }
 }

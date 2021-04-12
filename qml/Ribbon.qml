@@ -20,10 +20,12 @@ import QtQuick 2.0
 Rectangle {
     id: ribbon
     width: parent.width
-    height: minimized ? groups.height : 80
+    height: minimized ? groups.height + bottomBorderHeight : 80
     color: Style.colorBackground
 
     property bool minimized: false
+
+    property int bottomBorderHeight: 1
 
     Row {
         id: groups
@@ -33,9 +35,17 @@ Rectangle {
 
     Rectangle {
         width: ribbon.width
-        height: ribbon.height - groups.height
+        height: ribbon.height - groups.height - bottomBorderHeight
         anchors.bottom: ribbon.bottom
+        anchors.bottomMargin: bottomBorderHeight
         color: Style.colorForeground
+    }
+
+    Rectangle {
+        width: ribbon.width
+        height: bottomBorderHeight
+        anchors.bottom: ribbon.bottom
+        color: Style.colorBorder
     }
 
     Component.onCompleted: {
