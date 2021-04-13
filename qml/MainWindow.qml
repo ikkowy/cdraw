@@ -19,6 +19,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 
 Window {
+    id: mainWindow
     width: 800
     height: 600
     visible: true
@@ -57,7 +58,7 @@ Window {
                 cursorShape: Qt.SplitHCursor
                 onPositionChanged: {
                     var width = sidebar.width + mouseX;
-                    sidebar.width = Math.max(width, parent.width);
+                    sidebar.width = Math.min(Math.max(width, parent.width), mainWindow.width);
                 }
             }
         }
