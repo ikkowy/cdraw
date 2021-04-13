@@ -20,11 +20,11 @@ pragma Singleton
 import QtQuick 2.0
 
 Item {
-    property color colorGenericBackground: "#e0e0e0"
-    property color colorRibbonBackground: "#151515"
-    property color colorRibbonForeground: "#252525"
-    property color colorSidebarBackground: "#454545"
-    property color colorStatusbarBackground: "#252525"
-    property color colorText: "#f0f0f0"
-    property color colorTextInactive: "#a0a0a0"
+    property color colorGenericBackground: "#e0e0e5"
+    property color colorRibbonBackground: "#151520"
+    property color colorRibbonForeground: "#252530"
+    property color colorSidebarBackground: "#454550"
+    property color colorStatusbarBackground: "#252530"
+    property color colorText: "#f0f0f5"
+    property color colorTextInactive: "#a0a0a5"
 }

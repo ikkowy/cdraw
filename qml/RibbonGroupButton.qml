@@ -30,6 +30,7 @@ Rectangle {
     Text {
         id: label
         anchors.centerIn: parent
+        font.pixelSize: 12
         color: active ? Style.colorText : Style.colorTextInactive
     }
 

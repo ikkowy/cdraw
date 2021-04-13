@@ -18,6 +18,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QIcon>
+#include <QFont>
 
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
@@ -25,6 +26,8 @@ int main(int argc, char *argv[]) {
     QQmlApplicationEngine engine;
 
     app.setWindowIcon(QIcon(":/icons/logo.svg"));
+
+    app.setFont(QFont("Open Sans"));
 
     engine.load("qrc:/MainWindow.qml");
 
