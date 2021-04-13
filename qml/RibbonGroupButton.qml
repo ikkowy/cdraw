@@ -21,7 +21,7 @@ Rectangle {
     objectName: "RibbonGroupButton"
     width: label.width + 20
     height: 20
-    color: active ? Style.colorForeground : Style.colorBackground
+    color: active ? Style.colorRibbonForeground : Style.colorRibbonBackground
 
     property var ribbon
     property var group

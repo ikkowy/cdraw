@@ -23,7 +23,6 @@ Window {
     height: 600
     visible: true
     title: "Chicken Draw"
-    color: Style.colorBackground
 
     Ribbon {
         id: ribbon
@@ -45,13 +44,13 @@ Window {
         width: 200
         height: parent.height - ribbon.height
         anchors.bottom: parent.bottom
-        color: Style.colorForeground
+        color: Style.colorSidebarBackground
 
         Rectangle {
-            width: 3
+            width: 5
             height: parent.height
             anchors.right: parent.right
-            color: Style.colorBorder
+            color: Style.colorSidebarHandle
 
             MouseArea {
                 anchors.fill: parent
@@ -62,5 +61,13 @@ Window {
                 }
             }
         }
+    }
+
+    Rectangle {
+        width: parent.width - sidebar.width
+        height: parent.height - ribbon.height
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        color: "yellow"
     }
 }

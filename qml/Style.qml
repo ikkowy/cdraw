@@ -23,6 +23,11 @@ Item {
     property color colorBackground: "#101010"
     property color colorForeground: "#202020"
     property color colorBorder: "#000000"
+
+    property color colorRibbonBackground: "blue"
+    property color colorRibbonForeground: "red"
+    property color colorSidebarBackground: "green"
+    property color colorSidebarHandle: "purple"
     property color colorText: "#f0f0f0"
     property color colorTextInactive: "#a0a0a0"
 }
