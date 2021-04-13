@@ -22,8 +22,12 @@ Window {
     id: mainWindow
     width: 800
     height: 600
+    minimumWidth: 640
+    minimumHeight: 480
     visible: true
     title: "Chicken Draw"
+    visibility: "Maximized"
+    color: Style.colorGenericBackground
 
     Ribbon {
         id: ribbon
@@ -42,39 +46,40 @@ Window {
 
     Rectangle {
         id: sidebar
-        width: 200
-        height: parent.height - ribbon.height
+        width: hidden ? 0 : 300
+        height: parent.height - ribbon.height - statusbar.height
         anchors.bottom: parent.bottom
+        anchors.bottomMargin: statusbar.height
         color: Style.colorSidebarBackground
 
-        property int handleWidth: 5
-
-        Rectangle {
-            width: sidebar.handleWidth
-            height: parent.height
-            anchors.right: parent.right
-            color: Style.colorSidebarHandle
-
-            MouseArea {
-                anchors.fill: parent
-                cursorShape: Qt.SplitHCursor
-                onPositionChanged: {
-                    var width = sidebar.width + mouseX;
-                    sidebar.width = Math.min(Math.max(width, sidebar.handleWidth), mainWindow.width);
-                }
-            }
-        }
+        property bool hidden: false
     }
 
     Rectangle {
         width: parent.width - sidebar.width
-        height: parent.height - ribbon.height
+        height: parent.height - ribbon.height - statusbar.height
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        color: "yellow"
+        anchors.bottomMargin: statusbar.height
+        color: Style.colorGenericBackground
     }
 
-    onWidthChanged: {
-        if (sidebar.width > width) { sidebar.width = Math.max(width, sidebar.handleWidth); }
+    Rectangle {
+        id: statusbar
+        width: parent.width
+        height: 20
+        anchors.bottom: parent.bottom
+        color: Style.colorStatusbarBackground
+    }
+
+    Item {
+        focus: true
+        Keys.onPressed: {
+            if ((event.key == Qt.Key_B) && (event.modifiers & Qt.ControlModifier)) {
+                sidebar.hidden = !sidebar.hidden;
+            } else if ((event.key == Qt.Key_R) && (event.modifiers & Qt.ControlModifier)) {
+                ribbon.minimized = !ribbon.minimized;
+            }
+        }
     }
 }
