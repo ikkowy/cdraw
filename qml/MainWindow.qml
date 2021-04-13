@@ -47,8 +47,10 @@ Window {
         anchors.bottom: parent.bottom
         color: Style.colorSidebarBackground
 
+        property int handleWidth: 5
+
         Rectangle {
-            width: 5
+            width: sidebar.handleWidth
             height: parent.height
             anchors.right: parent.right
             color: Style.colorSidebarHandle
@@ -58,7 +60,7 @@ Window {
                 cursorShape: Qt.SplitHCursor
                 onPositionChanged: {
                     var width = sidebar.width + mouseX;
-                    sidebar.width = Math.min(Math.max(width, parent.width), mainWindow.width);
+                    sidebar.width = Math.min(Math.max(width, sidebar.handleWidth), mainWindow.width);
                 }
             }
         }
@@ -70,5 +72,9 @@ Window {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         color: "yellow"
+    }
+
+    onWidthChanged: {
+        if (sidebar.width > width) { sidebar.width = Math.max(width, sidebar.handleWidth); }
     }
 }
